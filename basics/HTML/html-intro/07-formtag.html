@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Form Tag
+    </title>
+    <body>
+      <form action="HTML/html-intro/index.php" method="POST" id="sending">
+        <label for="usernam">USERNAME</label>
+        <input type="text" name="username" id="username"><br>
+        <label for="password">PASSWORD</label>
+        <input type="password" name="password" id="password"><br>
+        <label for="emailid">Email ID</label>
+        <input type="email" id="emailid"><br>
+        <label for="radio">Gender</label><br>
+        <input type="radio" name="radio">
+        <label for="radio" <slot name="radio">Male</slot><br>
+        <input type="radio" name="radio">
+        <label for="radio" <slot name="radio">Female</slot><br>
+        <input type="checkbox" name="checkbox" id="1st">
+        <label for="checkbox" id="1st">vaccination-1st dose</label><br> 
+        <input type="checkbox" name="checkbox" id="2nd">
+        <label for="checkbox" id="2nd">vaccination-2nd dose</label><br>
+        <label for="date">Vaccination Date</label><br>
+        <input type="date" id="date"><br>
+        <label>Preffered Vaccine</label><br>
+        <select>
+          <option>Covaxin</option>
+          <option>Covishield</option>
+        </select><br>
+        <label for="textarea">Feed Back/Complaints</label><br>
+        <textarea type="Description" style="margin: 0px; width: 242px; height: 55px;"></textarea><br>
+        <input type="button" value="Submit">
+        <input type="reset" value="reset">
+      </form>
+    </body>
+  </head>
+</html>

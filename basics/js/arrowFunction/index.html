@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            alert('hi');
+            let sum = (a,b) => a+b;
+            alert(sum(5,3));
+
+            function ask(question,yes,no) {
+                if (confirm(question)) yes()
+                else no();
+                }
+            ask(
+                "Do you Agree",
+                () => alert('You agreed'),
+                () => alert('You are not agreed.')
+            );
+
+            function counter(initialValue){
+                this.count= initialValue;
+                function increment() {
+                    this.count+=1;
+                }
+                function getValue(){
+                    return this.count;
+                }
+            }
+            const a = new counter(0);
+            const b = new counter(5);
+            a.increment();
+            a.increment();
+            a.increment();
+            a.getValue();
+            b.increment();
+            b.getValue();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        
+        <script>
+                alert('hi');
+                function ask(question,yes,no) {
+                if (confirm(question)) yes()
+                else no();
+                }
+                function showOk() {
+                alert('Authorize');
+                }
+                function showCancel() {
+                alert('Decline');
+                }
+                ask("Do you agree?", showOk, showCancel);
+        </script>
+    </body>
+</html>

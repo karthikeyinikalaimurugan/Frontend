@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      let user = {
+        name: 'karthi'
+      }
+      alert(user.name);
+      let msg = user;
+      msg.name = 'Changed name';
+      alert(user.name);
+
+      let a = {};
+      let b = a;                // copy of reference
+      alert( a == b );          // true
+      alert( a===b ); 
+
+      let x = {};
+      let y = {};               // indepentend object
+      alert( x == y );          // false
+      
+      let userDetails = {
+        name: 'karthiUser',
+        size: {
+          height: 156,
+          weight: 50,
+        },
+        age: 24,
+      details() {
+        alert(this.size.height);
+      }
+    };
+    let clone = Object.assign({}, userDetails);
+      alert(clone.name);
+      alert( userDetails.sizes === clone.sizes ); // true
+      userDetails.details();
+    </script>
+  </body>
+</html>
