@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+</head>
+<body>
+  <form action="results.html" method="GET" enctype="multipart/form-data">
+    <div>
+      <label for="username">USERNAME</label>
+      <input type="username" name="username" id="username" required>
+    </div>
+    <div>
+      <label for="password">PASSWORD</label>
+      <input type="password" name="password" required>
+    </div>
+    <div>
+      <label for="email">EMAIL</label>
+      <input type="email" name="email" id="email" required>
+    </div>
+    <div>
+      <label for="age">AGE</label>
+      <input type="number" name="age" id="age" min="1" max="35" step="5">
+    </div>
+    <div>
+      <label for="data">DATE OF BIRTH</label>
+      <input type="date" name="date" id="date">
+    </div>
+    <div>
+      VACCINE DOSAGE
+      <div>
+        <label for="vaccine1">FIRST DOSE</label>
+        <input type="checkbox" name="vaccine1" id="vaccine1">
+      </div>
+      <div>
+        <label for="vaccine2">SECOND DOSE</label>
+        <input type="checkbox" name="vaccine2" id="vaccine2">
+      </div>
+    </div>
+    <div>
+      GENDER
+      <div>
+        <label for="male">MALE</label>
+        <input type="radio" name="male" id="male">
+      </div>
+      <div>
+        <label for="female">FEMALE</label>
+        <input type="radio" name="female" id="female">
+      </div>
+    </div>
+    <div>
+      <label for="feedback">Feed Back</label>
+      <textarea name="feedback" id="feedback" cols="30" rows="10">Good</textarea>
+    </div>
+    <div>
+      <label for="file">UPLOAD IMAGE</label>
+      <input type="file" name="file" id="file">
+    </div>
+    <div>
+      <label for="phone">PHONE</label>
+      <input type="tel" name="phone" id="phone">
+    </div>
+    <div>
+      <label for="color">COLOR</label>
+      <input type="color" name="color" id="color">
+    </div>
+    <button type="reset">RESET</button>
+    <button type="submit">SUBMIT</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selector Proerties</title>
+  <style>
+    h1 {
+      color: royalblue;
+      font-variant: small-caps;
+    }
+
+    #title {
+      color: salmon;
+      font-weight: bold;
+    }
+    
+    .selector {
+      height: 100px;
+      width: 100px;
+      background-color: teal;
+      margin-bottom: 10px;
+      color: sandybrown;
+      font-family: serif;
+      display: block;
+    }
+    /* 
+      BlockLevelElement - full width of parent element
+      span is not a block level element
+    */
+
+    ul li {
+      display: inline;
+      list-style-type: none;
+      background-color:yellowgreen;
+      margin-left: 10px 20px 10px 10px;
+      padding: 10px;
+    }
+    p {
+      background-color: wheat;
+    }
+    b {
+      background-color: tomato;
+      display: inline-block;
+    }
+    /* 
+      #id - style applied for particular element
+      .class - style applied for multiple element.
+    */
+  </style>
+</head>
+<body>
+  <h1>Selector Properties</h1>
+  <h3 id="title">Learn complete CSS - Selector property</h3>
+  <div class="selector">HI</div>
+  <div class="selector">HELLO</div>
+  <span class="selector">Hey!</span>
+
+  <h1>Display Properties</h1>
+  <div>
+    <ul>
+      <li>Home</li>
+      <li>About us</li>
+      <li>Products</li>
+      <li>Enquiry</li>
+      <li>Contact us</li>
+    </ul>
+  </div>
+  <p>
+    <b>Lorem ipsum dolor sit amet consectetur</b> adipisicing elit. Repudiandae, obcaecati rerum placeat reprehenderit <b>ex accusamus perspiciatis? At dignissimos,</b> totam quia quidem ut id esse voluptate, molestiae voluptatibus dolorem possimus alias.
+  </p>
+  <p>
+    <b>Lorem ipsum dolor sit amet consectetur</b> adipisicing elit. Repudiandae, obcaecati rerum placeat reprehenderit <b>ex accusamus perspiciatis? At dignissimos,</b> totam quia quidem ut id esse voluptate, molestiae voluptatibus dolorem possimus alias.
+  </p>
+</body>
+</html>
