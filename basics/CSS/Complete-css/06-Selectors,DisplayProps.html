@@ -30,13 +30,28 @@
       span is not a block level element
     */
 
-    ul li {
-      display: inline;
-      list-style-type: none;
-      background-color:yellowgreen;
-      margin-left: 10px 20px 10px 10px;
-      padding: 10px;
+    * {
+      margin: 0px;
+      padding: 0px;
     }
+    
+    #navbar {
+    width: 100%;
+    height: 50px;
+    background-color: tomato;
+    padding-bottom: 5px 5px;
+    padding-left: 400px;
+    margin-bottom: 50px;
+    }
+
+    #navbar ul li {
+      display:inline-block;
+      list-style: none;
+      padding: 10px;
+      line-height: 30px;
+      color: white;
+    }
+
     p {
       background-color: wheat;
     }
@@ -58,7 +73,7 @@
   <span class="selector">Hey!</span>
 
   <h1>Display Properties</h1>
-  <div>
+  <div id="navbar">
     <ul>
       <li>Home</li>
       <li>About us</li>
