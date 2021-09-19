@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradient Color</title>
+  <style>
+    #Gradient {
+      height: 200px;
+      width: 200px;
+      background: -webkit-linear-gradient(#ADD8E6, #FFA500,gold);
+      border-radius: 200px;
+    }
+    /*
+    Bowser suport:
+    webkit - google,safari
+    moz - firefox
+    o - opera
+    Box-shadow - all
+    -webkit-linear-gradient - Top, Bottom, Center, Degree
+    -webkit-radial-gradient - Center
+    border-radius - TRBL
+    */
+
+    .box {
+      height: 200px;
+      width: 200px;
+      background:rgb(184, 169, 5);
+    }
+    .shadow {
+      box-shadow: 5px 5px 1px 0px;
+    }
+    /*
+    offset - Place where the shadow should apply
+    (5px 5px 1px 0px)
+    horizontal offset
+    vertical offset
+    blur radius - density
+    Spreading value
+    */
+
+  </style>
+</head>
+<body>
+  <h1>Gradient Color</h1>
+  <div id="Gradient"></div>
+  <h1>Box shadow</h1>
+  <div class="box shadow"></div>
+</body>
+</html>

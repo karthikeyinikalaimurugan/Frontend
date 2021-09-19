@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pseudo Selector</title>
+  <style>
+    /* Class,Id selector */
+    .first > p {
+      color:sandybrown;
+    }
+
+    .first + p {
+      color: red;
+    }
+
+    div[class="first"] {
+      background: seashell;
+    }
+
+    div[class~="inner"] {
+      background: silver;
+      color: navy;
+    }
+
+    div[id="second"] {
+      background: skyblue;
+      color: tomato;
+    }
+
+    .txt {
+      color:olivedrab;
+    }
+
+    a[title="ToolTip1"] {
+      color: lightseagreen;
+    }
+
+    a[href$="f"]{
+      color: lightslategray;
+    }
+
+    a[class="test"]{
+      color: limegreen;
+    }
+    
+    a[href="test.text"]{
+      color: red;
+    }
+
+    /*
+    > - Child selctor
+    + - Adjustend selector(next div)
+    div[class] - Class selector
+    ~ - Multiple Class
+    ^ - Prefix
+    $ - Postfix
+    */
+    
+    /* Pesudo selector */
+    a {
+      color: maroon;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: slategray;
+    }
+
+    a:active {
+      color: orangered;
+    }
+
+    a:visited {
+      color: orchid;
+    }
+    
+    /* Child-element selector */
+    ul li:first-child{
+      color: peru;
+    }
+    ul li:last-child{
+      color: rgb(224, 13, 48);
+    }
+    ul li:nth-child(3){
+      color: plum;
+    }
+    ul li:nth-child(even){
+      color: purple;
+    }
+  </style>
+</head>
+<body>
+  <h1>Class Id Selector</h1>
+  <div class="first">
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero, ipsum!</p>
+    <div class="txt">
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, debitis?</p>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, labore.</p>
+    <div class="inner txt">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, exercitationem!</p>
+      <div class="txt">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, debitis?</p>
+      </div>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus, dolores!</p>
+    </div>
+  </div>
+  <div id="second">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, non!</p>
+    <div class="txt">
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, debitis?</p>
+    </div>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, iste.</p>
+  </div>
+  <a href="test.html" title="ToolTip1">Link1</a>
+  <a href="test.pdf" title="ToolTip2">Link2</a>
+  <a class="test" href="test.png" title="ToolTip3">Link3</a>
+  <a href="test.text" title="ToolTip4">Link4</a>
+  <h1>Pseudo Selector</h1>
+  <div>
+    <a href="#" title="link1">Link1</a>
+    <a href="#" title="link2">Link2</a>
+    <a href="#" title="link3">Link3</a>
+    <a href="#" title="link4">Link4</a>
+  </div>
+  <h1>Child-Element Selector</h1>
+  <div>
+    <ul>
+      <li>element 1</li>
+      <li>element 2</li>
+      <li>element 3</li>
+      <li>element 4</li>
+      <li>element 5</li>
+    </ul>
+  </div>
+</body>
+</html>

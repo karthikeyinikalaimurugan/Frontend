@@ -8,6 +8,12 @@
 - [Margin-properties] - Used for modifying external space.
 - [Padding-properties] - Used for modifying internal space.
 - [Border-properties] - Used for modifying boaders(width,color,style)TRBL
-- [Selectors]
-- [Boxmodel]
+- [Selectors] - Used for selecting elements.
 - [Display&Position-properties]
+- [ParentChild-Properties]
+- [ClassId-Properties]
+- [Pseudo-Properties]
+- [Childselector-Properties]
+- [Gradientcolor]
+- [Boxshadow]
+- [ChessBoard]
