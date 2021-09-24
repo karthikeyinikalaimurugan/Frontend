@@ -1,0 +1,18 @@
+.container {
+  border: 1px solid #ccc;
+  float: left;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dog {
+  padding: 10px;
+  opacity: 0.8;
+}
+
+.dog:hover {
+  opacity:1;
+  transition: .9s;
+  border: 5px solid black;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html> - tells document type html and if this line is presect it uses html5
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0,width=device-width"/>
+    <title>Display Test</title>
+    <style>
+      span {
+        border: 2px solid greenyellow;
+      }
+      .inline{
+        color: hotpink;
+        display: inline;
+      }
+      .block{
+        color: grey;
+        display: block;
+      }
+      .inlineblock{
+        color: greenyellow;
+        display: inline-block;
+      }
+      .float{
+        float:right;
+        background-color: blue;
+      }
+      .float::after{
+        content: "";
+        clear: right;
+        display:table;
+      }
+      .backgroundRed{
+        background-color:red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Inline Element</h1>
+    <div>Lorem ipsum dolor sit amet, <span class="inline">consectetur adipisicing elit</span>. Aliquam cumque rerum voluptas adipisci non laudantium eveniet dicta voluptates doloremque?</div>
+    <h1>Block Element</h1>
+    <div>Lorem ipsum, dolor sit amet <span class="block">consectetur adipisicing elit</span>. Ex, distinctio.</div>
+    <h1>Inline-Block Element</h1>
+    <div>Lorem ipsum dolor sit amet <span class="inlineblock">consectetur adipisicing elit</span>. At, fugit.</div>
+    <h1>float Element</h1>
+    <span class="float">consectetur adipisicing elit</span>
+    <div class="backgroundRed">
+      Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.Lorem ipsum dolor sit ametTexted followed by inline block. At, fugit.
+    </div>
+    <h1 style="background-color:yellow">
+      SAMPLE H1 Tag
+    </h1>
+  </body>
+</html>

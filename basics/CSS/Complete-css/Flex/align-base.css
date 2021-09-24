@@ -1,0 +1,12 @@
+.container {
+      /* align-content: center; */
+      /*
+      Cross-Axis Alignment(Up Down)
+      align-content: flex-end;
+      align-content: center;
+      align-content: space-around;
+      align-content: space-between;
+      align-content: baseline;
+      align-content: stretch;
+      */
+}

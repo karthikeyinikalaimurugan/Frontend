@@ -1,0 +1,23 @@
+/* .container {
+  align-items: flex-start;
+}
+
+.box:nth-child(1) {
+  align-self: stretch;
+}
+
+.box:nth-child(2) {
+  align-self: flex-start;
+}
+
+.box:nth-child(3) {
+  align-self: center;
+}
+
+.box:nth-child(4) {
+  align-self: flex-end;
+}
+
+.box:nth-child(5) {
+  align-self: stretch;
+} */

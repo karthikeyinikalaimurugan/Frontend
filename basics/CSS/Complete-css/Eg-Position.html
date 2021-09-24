@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position</title>
+  <style>
+    .static{
+      position:static;
+      top:30px; /* does not affect*/
+      border:2px solid green;
+    }
+.relative{
+      position:relative;
+      left:50px;
+      border:2px solid yellow;
+    }
+.absolute{
+      position:absolute;
+      left:50px;
+      top: 20px;
+      border:2px solid red;
+    }
+.fixed{
+      position:fixed;
+      right:0;
+      bottom:0;
+      border:2px solid orange;
+    }
+.sticky{
+      position:sticky;
+      top:20px;
+      border:2px solid orangered;
+    }
+  </style>
+</head>
+<body>
+  <h1>Positioning</h1>
+  <div class="static">I am static Div, I am default position for all elements, Top,right,bottom,left do not affect me.</div>
+  I am text before relative................................<span class="relative">I am relative Div, I am adjusted with top,left,bottom,right from the current flow</span>
+  <div class="absolute">I am absolute Div, I am adjusted with top,left,bottom,right either from parent positioned element or from browser's vieport</div>
+  <div class="parent" style="position:relative;">
+    <div class="absolute">I am absolute Div, I am adjusted with top,left,bottom,right either from parent positioned element or from browser's vieport</div>
+  </div>
+  <div class="fixed">I am fixed Div, I am adjusted with top,left,bottom,right from the browser viewport</div>
+  <div class="sticky">I am sticky Div, I make scrollable from changing position from relative to fixed</div>
+</body>
+</html>

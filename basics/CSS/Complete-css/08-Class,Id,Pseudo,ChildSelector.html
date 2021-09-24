@@ -19,11 +19,7 @@
       background: seashell;
     }
 
-    div[class~="inner"] {
-      background: silver;
-      color: navy;
-    }
-
+    
     div[id="second"] {
       background: skyblue;
       color: tomato;
@@ -36,11 +32,22 @@
     a[title="ToolTip1"] {
       color: lightseagreen;
     }
-
-    a[href$="f"]{
+    div[class~="inner"] { /* class containing word inner */
+      background: silver;
+      color: navy;
+    }
+    a[href|="t"]{ /* href equal to or starting with t */
       color: lightslategray;
     }
-
+    a[href^="f"]{ /* href starting with f */
+      color: lightslategray;
+    }
+    a[href$="f"]{ /* href ending with f */
+      color: lightslategray;
+    }
+    a[href*="art"]{ /* href containing substring t */
+      color: yellow;
+    }
     a[class="test"]{
       color: limegreen;
     }
@@ -53,9 +60,11 @@
     > - Child selctor
     + - Adjustend selector(next div)
     div[class] - Class selector
-    ~ - Multiple Class
-    ^ - Prefix
-    $ - Postfix
+    ~ - word matching
+    ^ - Prefix(Starting with)
+    $ - Postfix(Ending with)
+    * - Sub string matching(all)
+    | - String equal or starting with
     */
     
     /* Pesudo selector */
@@ -75,7 +84,31 @@
     a:visited {
       color: orchid;
     }
+
+    input:focus {
+      border: 2px solid red;
+      outline: none;
+    }
+
+    input:target {
+      border:2px solid rgb(83, 50, 6);
+    }
+
+    input:read-only {
+      background-color: chocolate;
+    }
+
+    div:focus {
+      background-color: red;
+    }
     
+    div.box2::before {
+      content: "\f099";
+    }
+
+    div.box1::after {
+      content: " - Read me...";
+    }
     /* Child-element selector */
     ul li:first-child{
       color: peru;
@@ -94,6 +127,8 @@
 <body>
   <h1>Class Id Selector</h1>
   <div class="first">
+    <div class="box1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, incidunt!</div>
+    <div class="box2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, nobis?</div>
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero, ipsum!</p>
     <div class="txt">
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, debitis?</p>
@@ -106,7 +141,13 @@
       </div>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus, dolores!</p>
     </div>
+    <input type="text" name="name" id="name" placeholder="name" disabled value="I am not editable">
+    <div class="inner txt2">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, exercitationem!</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus, dolores!</p>
+    </div>
   </div>
+  <p>Senthur Athiban</p>
   <div id="second">
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, non!</p>
     <div class="txt">
@@ -116,8 +157,9 @@
   </div>
   <a href="test.html" title="ToolTip1">Link1</a>
   <a href="test.pdf" title="ToolTip2">Link2</a>
-  <a class="test" href="test.png" title="ToolTip3">Link3</a>
-  <a href="test.text" title="ToolTip4">Link4</a>
+  <a href="teasdfadlsajflsdfjlsjflasartst.pdf" title="ToolTip2">Link3</a>
+  <a class="test" href="test.png" title="ToolTip3">link4</a>
+  <a href="test.text" title="ToolTip4">Link5</a>
   <h1>Pseudo Selector</h1>
   <div>
     <a href="#" title="link1">Link1</a>
