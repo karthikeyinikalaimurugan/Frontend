@@ -1,0 +1,79 @@
+html, body {
+  margin:0;
+}
+
+.static {
+  position: static;
+  background-color:teal;
+  height: 200px;
+  /*
+  position will be default as static always
+  TRBL - will not affect
+  */
+}
+
+.relative {
+  position: relative;
+  background-color:tomato;
+  height: 200px;
+
+  /*
+  Same as static but TRBL will effect
+  block- new line from body/Parent
+  inline- same line
+  it takes width 100%
+  it will not overlap the parent element content
+  */
+}
+
+.absolute {
+  position: absolute;
+  background-color:violet;
+  height: 200px;
+  /*
+  width is taken based on content
+  if no positioned parent, it is relative to the body.
+  it is relative to the imediate positioned parent element.
+  Always need to specify width and height for fixed and absolute.
+  overlap possible.
+  */
+}
+
+.fixed {
+  position: fixed;
+  background-color: yellow;
+  height: 200px;
+  width: 100%;
+  /*
+  TLBR will always consider the position from the body element.
+  Always need to specify width and height for fixed and absolute.
+  */
+}
+
+.sticky {
+  position: sticky;
+  background-color:yellowgreen;
+  height: 200px;
+
+  /*
+  sticky parent content should be scrobale.
+  */
+}
+
+.parentDiv {
+  height:300px;
+}
+
+.absoluteInRelative {
+  position: relative;
+  background-color: brown;
+  height: 200px;
+}
+
+
+
+
+/* absolute -> 2 type
+absolute Parent without position-
+absolute Parent with position-
+  */
