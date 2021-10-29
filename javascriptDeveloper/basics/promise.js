@@ -16,3 +16,103 @@ a = new Promise((res,rej)=>{
 });
 console.log(a);
 
+// resolved - then;
+// rejected - catch;
+// either resolved or rejected - finaly
+
+a = new Promise((resolve,reject)=>{
+  resolve('soper');
+})
+a.then(function(data){
+  console.log(data);
+});
+
+a = new Promise((resolve,reject)=>{
+  reject('error');
+});
+a.catch((err)=>{
+  console.log(err);
+});
+
+let isSuccess = false;
+new Promise((resolve,reject)=>{
+    isSuccess ? resolve('success'): reject('failed');
+}).then(data=>{
+    console.log(data);
+}).catch(err=>console.log(err));
+
+let isSuccess = true;
+new Promise((resolve,reject)=>{
+    isSuccess ? resolve('success'): reject('failed');
+}).then(data=>{
+    console.log(data);
+}).catch(err=>console.log(err)
+).finally(()=>{
+    console.log('Promise done!');
+})
+
+
+a = {
+  getName: function(){
+    return new Promise((resolve,reject)=>{
+      resolve('Obj result');
+    })
+  },
+
+}
+let b = a.getName().then((data)=>console.log(data))
+
+console.log('1');
+
+new Promise((res,rej)=>{
+console.log('2');    
+res();
+})
+
+setTimeout(function(){
+console.log('3')},0);
+
+setTimeout(function(){
+console.log('4')},1000);
+
+console.log('5');
+
+// 1 2 5 3 4
+
+console.log('1');
+
+new Promise((res,rej)=>{
+    console.log('6');
+    setTimeout(()=>{
+        console.log('2');
+        res()
+    },5000)
+})
+
+setTimeout(function(){
+console.log('3')},0);
+
+setTimeout(function(){
+console.log('4')},1000);
+
+console.log('5');
+
+// 1 6 5 3 4 2
+
+new Promise(function(resolve, reject) {
+  setTimeout(() => {
+    throw new Error("Whoops!");
+  }, 1000);
+}).catch(alert);
+
+new Promise(function(resolve, reject) {
+  setTimeout(() => {
+    reject(new Error("Whoops!"));
+  }, 1000);
+}).catch(alert);
+
+setTimeout(() => {
+  new Promise(function(resolve, reject) {
+      throw new Error("Whooooooooo!");  
+  }).catch(alert);
+}, 1000);
