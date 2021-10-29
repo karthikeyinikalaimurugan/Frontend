@@ -11,3 +11,5 @@ function colorChange(selector,delay,callback){
 colorChange('#lcws78b2qc',5000,(element)=>{
   element.style.backgroundColor='red';
 })
+
+
