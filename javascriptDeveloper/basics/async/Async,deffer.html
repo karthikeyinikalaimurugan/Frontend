@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Async/deffer</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event){
+      alert('DOM loaded!');
+    });
+  </script>
+</head>
+<body>
+  <script async src="async4.js" ></script>4mb -
+  <script async src="async1.js" ></script>
+  <script async src="async2.js" ></script>
+  <script async src="async3.js" ></script> 1mb 
+  <script async src="async4.js" ></script>
+  <script async src="async5.js" ></script>
+  <script async src="async6.js" ></script>
+  <script async src="async.js" ></script>
+  <script async src="async.js" ></script>
+  <script defer src="defer5.js" ></script>
+  <script defer src="defer1.js" ></script>
+  <script defer src="defer2.js" ></script>
+  <script defer src="defer3.js" ></script>
+  <script defer src="defer4.js" ></script>
+  <div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab adipisci saepe cumque ex ratione laudantium dolorem sunt debitis voluptatem dicta.</p>
+  </div>
+  <div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab adipisci saepe cumque ex ratione laudantium dolorem sunt debitis voluptatem dicta.</p>
+  </div>
+</body>
+</html>
+
+
+async - 5mb - 4sec -- doc-6sec - execute
+defer - 5mb - 4sec -- doc-6sec
+document - 20mb - 20sec - DOMContentLoaded - defer execute

@@ -3,13 +3,15 @@ function add(a,b) {
   return res;
 }
 add(5,6);
+const add = (a,b)=>a+b;
 alert(res);
 
 //
 
 function fullName(fname,lname) {
-  username = (fname + ' ' + lname);
-  return username;
+  // username = (fname + ' ' + lname);
+  // return username;
+  return `${fname} ${lname}`;
 }
 fullName('karthikeyini', 'kalaimurugan');
 alert(username);
@@ -17,7 +19,7 @@ alert(username);
 //
 
 function checkAge(a) {
-  x = a > 18 ? 'Allowed to play' : 'Not supposed to play';
+  x = (a > 18) ? 'Allowed to play' : 'Not supposed to play';
   return x;
 }
 let age = prompt('Age?');
@@ -40,14 +42,16 @@ const nveg = {
   dessert: 'icecream'
 }
 
+const food = (cat)=>menu(cat==='veg' ? 1 : 2);
+
 function food(x) {
   if (category == 'veg') {
     alert('Vegitarian offers starts from 30%');
-    menu(1);
+    alert(JSON.stringify(veg));
   }
   else {
     alert('Non vegitarian offers starts from 50%');
-    menu(2);
+    alert(JSON.stringify(nveg));
   }
 }
 
@@ -55,13 +59,13 @@ let category = prompt('For which you want to know offers?');
 food(category);
 
 
-function menu(a) {
-  if (a == 1) {
-    alert(JSON.stringify(veg));
-  }
-  else {
-    alert(JSON.stringify(nveg));
-  }
-}
+// function menu(a) {
+//   if (a == 1) {
+//     alert(JSON.stringify(veg));
+//   }
+//   else {
+//     alert(JSON.stringify(nveg));
+//   }
+// }
 
 

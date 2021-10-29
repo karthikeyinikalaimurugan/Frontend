@@ -27,8 +27,15 @@ const sarees = {
   sareeSize: "5.6",
   sareeMaterial: "Fabric",
   sareeDesing: "Zari border",
+  color: false
 } 
 alert(JSON.stringify(sarees));
+if(sarees.hasOwnProperty('color')){
+  
+};
+if(sarees.color){
+  
+};
 
 alert('Undefined');
 let car;

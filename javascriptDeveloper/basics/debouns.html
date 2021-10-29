@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <textarea class="address"></textarea>
+  <script>
+    let targetElement = document.getElementsByClassName('address')[0];
+    targetElement.addEventListener('keypress', debounce);
+    let timerId = false;
+    function debounce(e){
+      if(!timerId) timerId = setTimeout(handleAddressChange,1000);
+    }
+    function handleAddressChange(){
+      clearTimeout(timerId);
+      timerId=false;
+      console.log('Updating address api req', targetElement.value);
+    }
+
+    const throttle = (func, limit) => {
+    let inThrottle
+    return function () {
+      const args = arguments
+      const context = this
+      if (!inThrottle) {
+        func.apply(context, args)
+        inThrottle = true
+        setTimeout(() => inThrottle = false, limit)
+      }
+    }
+  }
+  const debounce = (func, delay) => {
+    let inDebounce
+    return function () {
+      const context = this
+      const args = arguments
+      clearTimeout(inDebounce)
+      inDebounce = setTimeout(() => func.apply(context, args), delay)
+    }
+  }
+
+  function childFunc(msg){
+    console.log(msg);
+  }
+  function somefunc( ){
+    this.name = 'test';
+    this.age = 25;
+    let parentThis = this;
+    childFunc.apply(this,[]);
+    setTimeout(function(){
+      childFunc.apply(parentThis,[]);
+    },1000);
+
+  }
+  const a = debounce(childFunc,1000);
+  0
+  a('hello');
+  a('world');
+  a();1
+  a();
+  </script>
+</body>
+</html>

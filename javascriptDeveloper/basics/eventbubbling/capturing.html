@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Event bubling and event capturing</title>
+</head>
+<style>
+  p {
+   color: tomato;
+  }
+  strong {
+    color: yellowgreen;
+  }
+</style>
+<body>
+  <h1>bubbling and capturing</h1>
+  <p id="parent">Lorem ipsum dolor sit amet <strong id="child">consectetur adipisicing elit.</strong>Beatae accusantium autem eveniet praesentium dolores hic unde neque non voluptate. Modi, sunt. Accusantium voluptates non assumenda minima hic eveniet placeat alias.</p>
+  
+  <div id="parent1">
+    <button id="child1">
+      CLICK
+    </button>
+  </div>
+  <script type="text/javascript">
+  const parent = document.getElementById('parent');
+  const child = document.getElementById('child');
+
+  parent.addEventListener("click", function(){
+    console.log('I am parent(outermost)');
+  });                 // defaults its false - use bubbling or true - use capture
+
+  child.addEventListener("click", function(){
+    console.log('I am child(innermost)');
+  });
+
+  const parent1 = document.getElementById('parent1');
+  const child1 = document.getElementById('child1');
+
+  parent1.addEventListener("click", function(){
+    console.log('Parent clicked');
+  });            // true - use capture
+  child1.addEventListener("click", function(){
+    console.log('Child clicked');
+  },true);
+  </script>
+</body>
+</html>
