@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReactJs</title>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- // Loaded BABEL  
+    const b = ()=>{console.log('hello')};
+
+    function b(){
+      console.log('hello');
+    }
+  -->
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+  // oru new component welcome user component irukanum athuku author props vangi avangala welcome pananum author="senthur" welcome senthur so multiple  welcomes for different users senthur,karthikeyini, poochi. etch
+  class WelcomeUser extends React.Component {
+    render(){
+      return <div>Welcome {this.props.author} <span onClick={this.props.onDelete}>X</span></div> // ithu expression ila stringah kuduthuruka like normal html
+    }
+  }
+
+  class App extends React.Component {
+    constructor(props){
+      super(props);
+      this.delete = this.delete.bind(this);
+      this.state = {
+        authors:[{
+            id: 1,
+            name: 'senthur',
+          },
+          {
+            id: 2,
+            name: 'karthikeyini',
+          },
+          {
+            id: 3,
+            name: 'poochi',
+          }
+        ]
+      }
+    }
+    delete (authorId){
+      let updatedAuthors = this.state.authors.filter(author=>author.id!==authorId);
+      this.setState({
+        authors: updatedAuthors
+      })
+    }
+    
+    render(){ // ipo dynamic ah ithu render pananum loop la map function pathaiya ilaiya..? authors prop vangu
+      return <div>
+      {
+          this.state.authors.map((authorObj)=>{ // [] array kula iruka enry onona ithula author ['senthur','karthikeyini','poochi'
+            return <WelcomeUser key={authorObj.id} onDelete={()=>this.delete(authorObj.id)} author={authorObj.name}/> // yes atha vangi intha compoennt ku propsah pass pandroam. ethathu uniq id ah irukanum antha iteration ku.. 1st entry 1 irunthu 3rd entry 1 iruntha athauku ethu update pananum nu theriyathu.. 
+            //ipo current iteration index thaan irukum so 3 nah  0,1,2 irukum key ah.  yes map oda function ku first param element and second param antha element index in that array.
+          })
+      }
+      </div>
+    }
+  }
+  
+  ReactDOM.render(<App/>, document.getElementById('root'))
+  // app component render kula eruma maadea App nu oru component firstuh create pannu.. firstuh oru app componetn create panu ipo App ngrathu undefined enga paniruka app nu oru comonent..?
+  // ipo enaku multiple names veanum.
+  // hint wrapper component create pani athukula ithu multiple times welcomUser compoentn use panikalam with multiple author App component vachuko
+// ithula children usea aagalala.. aprom ean open and close tag? props irukalam aana children irukathu thaan open and close veanum.
+
+
+
+
+
+
+
+
+
+
+  class MyApp extends React.Component {
+    render(){
+      return <div>heloo {this.props.title}! {this.props.children || 'no children for this component'}</div> // this.props.children == I am some contnetn
+    }
+  }
+  // ReactDOM.render(<MyApp title="Karthikeyini"/>, document.getElementById('root'))
+    // react.develpment.js  
+    // const React = {
+    //   Component, 
+    //   useState,
+    //   useEffect
+    // }
+    // export default React;
+
+
+    // with jsx - easy understanding of code(required babel)
+    // const div = <div className="test">I am component {this.props.title}</div>; // babel required
+
+    // Single element - Javascript (without babel)
+    // const title = 'senthur';
+    // const div = React.createElement('div',{ // babel not required
+    //   className: 'test',
+    // }, 
+    // `I am component ${title}`);
+
+    // nested with JS - nested and difficult to read 
+    // const div = React.createElement('div',{ // babel not required
+    //   className: 'test',
+    // }, 
+    // React.createElement('p',{ // babel not required
+    //   className: 'test',
+    // }, 
+    // `I am component ${title}`));
+
+    // JSX allows html to be written within javascript.
+//     class MyApp extends React.Component{
+//       constructor(props){
+//         super(props);
+//         this.state = {
+
+//         }
+//       }
+//       render(){ /// ithu vanthu intha component ena render pananum nu.. athu return panum..
+//         const result = <div>I am component {this.props.title}</div>;
+//         return result;
+//       }
+//     }
+
+
+//     <div id="root"></div> --- step 1
+
+//     <MyApp/> ---> renders  -> '<div> i am a component</div>'
+//     // ithu attribute ila.. props.. props vanthu namala define pandre variable mathuri.. attributes vanthu un istathukku vachukalam but make sure that it should not be  already defined attribute.
+//     // yes className alt, src, style, href ithu mathuri default irukuratha mathatha mathuri vera name la kuduthu data antha component ku send paniklam.
+//     // Haha product ngra datava antha component ku send pandroam..
+//     <Header company="Haha product"/>  ---- > renders ->  '<header>{this.props.company}</header>' -> '<header>Company</header>'
+//     inga 2 component <MyApp> and <Header> mostly Capital letter la irukurathu component bec Class name Capital la start aagum.. 
+
+// array nu sola mudiyathu object nu solalam...
+
+// wait naan sona React.createElement() // will return an object so here this code will produce something like this.
+
+// const Header = React.createElement('header',{},
+//       'I am a header'
+//     ) // intha function createElement ena return panum na intha object.
+// main
+//     console.log(Header);
+//     //  {
+//       element: '<div>',
+//       props: {
+//           children
+//         }
+//     }
+
+
+
+//       <header> -> tag 
+//       <Header> - Custom Component.
+//         class Header extends React.Component{
+//           render(){
+//             return <header>{this.props.company}</header>
+//           }
+//         }
+//         class MyApp extends React.Component{
+//           render(){
+//             return <div>
+//                   <Header/>  - both also possible either React Component or normal html elements. and return should be wrapped element
+//                   <header></header> // error bec render can return only one element so we wrap it in a single element apdi ila.. ithula irunthu return aaagurapo oru element thaan return aaganum <div></div> and not <div></div><div></div>
+//                 </div>  
+//           }
+//         }
+
+
+// it should return either html element or some other react element.
+//     ithu vanthu REACTDOM render ena panum na entire app or root component ah target element ku render panum...
+    
+
+
+
+
+// const element = React.createElement(
+//   'h1',
+//   {className: 'greeting'},
+//   'Hello, world!'
+// );
+
+// console.log(element);
+
+// {
+//   type: 'h1',
+//   props: {
+//     className: 'greeting',
+//     children: 'Hello, world!'
+//   }
+// };  so parent element kula ethathu kuduthurunha atha this.props.children nu ulla access panikalam.
+
+
+// <MyApp title="test"/> // ipadi close panama
+// <MyApp title="test">
+//    I am a children
+// </MyApp> // ipadi children um pass panikalam..
+
+// yes content vanthu children it can be text or any other component itself
+
+// <MyApp title="test">
+//    <Header/> // ipadiyum children pass panalm yes
+// </MyApp>
+
+// ithula My App ena render pananum ngrathu MyApp Class oda render la return panuvoam..
+
+
+// same Header Component la ena return pananumo render method la return panuvoam..
+
+
+// so component kula iruka render method antha compoennt call pana ena varanum.. nu specificah return pannaum.
+
+
+// but ReactDOM.render vanthu entire Wrapper component or root component ah actual target component ku render panum.
+// oru oru componentum onu return panuma...?
+
+// so athu enga call aagum ..? either unoru componentkula ila root level la..
+
+// so nee create pandre ella component umea oru root component kula than irukum  antha component ah dom oda attach pandrathu ReactDOM
+
+
+// <div id="root"></div>
+
+
+// class App extends React.Component{
+//     rendert(){
+// return <div>
+//     <Header/> -> <header>I am header</header>
+//     <Content/> -> <div> iam content</div>
+//     <Footer/> -> <footer> ia am footer</footer>
+// </div>;
+//     }
+// }
+
+// <App> -> ipadi ipo call pana keala iruka elements return panum..
+
+
+// <div>
+// <header>I am header</header>
+// <div> iam content</div>
+// <footer> ia am footer</footer>
+// </div>
+
+// ipo ithu thaan root component which holds all other component. apo ithu virtual DOM la iruku.. but innum nee kudutha id="root" div la innum attach aagala..
+
+// so intha root React component ah unoda actual html dom la attach pananum
+
+
+// inthal line execute aagura munadi vara
+// <div id="root"></div>
+// // empty childrens
+// athuku ReactDOM.render(<App/>, document.getElementById('root'));
+// after this line un component ithula attach aidukum ..
+// <div id="root">
+//     <div>
+//     <header>I am header</header>
+//     <div> iam content</div>
+//     <footer> ia am footer</footer>
+//     </div>
+// </div>
+
+
+
+// So entha oru app nalum oru root component la irunthu thaan start aagum..
+
+// nee create pana components ellamea virtualah irukm memoryla.. but innum dom la attach aagala.. so ReactDOM.render veanum  yes..
+// VM2646:11 Uncaught SyntaxError: Unexpected token ':'
+
+
+
+  </script>
+</body>
+</html>
