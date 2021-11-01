@@ -116,3 +116,87 @@ setTimeout(() => {
       throw new Error("Whooooooooo!");  
   }).catch(alert);
 }, 1000);
+
+
+
+
+//Promise API
+
+a = new Promise((resolve,reject)=>{
+  setTimeout(()=>{
+      resolve('resolved a')
+  },1000)
+})
+
+b = new Promise((resolve,reject)=>{
+  setTimeout(()=>{
+      reject('reject b')
+  },2000)
+})
+
+c = new Promise((resolve,reject)=>{
+  setTimeout(()=>{
+      reject('reject c')
+  },3000)
+})
+
+Promise.all([a,b,c]).then((data)=>{
+    
+  console.log(data,'all promises resolved')
+}).catch(err=>{
+  console.log('something went wrong')
+}).finally(()=>{
+  console.log('finshed!')
+});
+
+Promise.all([
+  new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      console.log('resolved a');
+    })
+  }),
+  new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      console.log('resolved a');
+    })
+  }),
+  new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      console.log('resolved a');
+    })
+  })
+]).then((data)=>{
+  console.log(data,'all promises resolved')
+}).catch(err=>{
+  console.log(err,'something went wrong')
+}).finally(()=>{
+  console.log('finshed!')
+});
+
+
+
+async function name(){
+  let promise = new Promise((resolve,reject)=>{
+      resolve('resolved');
+  })
+  return promise;
+}
+
+async function name(){
+  throw new Error('erer');
+  return 'resolved';
+}
+function name(){
+  let b = new Promise((resolve,reject)=>{
+      resolve('resolved');
+
+  })
+}
+
+async function name(){
+  let promise = new Promise((resolve,reject)=>{
+      setTimeout(()=>{resolve('resolved');},5000)
+  })
+  return promise;
+}
+
