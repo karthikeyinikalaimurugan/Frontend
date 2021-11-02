@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Event Handling</title>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+  class EventHandling extends React.Component {
+    constructor(){
+      super();
+      this.state = {firstvalue: "Event handling"}
+    }
+    // clickEvent(){
+    //   this.setState({firstvalue: "Event handling with arrow function"})   // in regular funct if we use this, then that this will not represent obj
+    // }
+
+    clickEvent = (e)=>{
+      this.setState({firstvalue: e})       // this respresent current object
+    }
+
+    render(){                               // arguments passed using bind(1,2) 1-this->current object of funct, 2-value
+      return <div>
+    <h1>{this.state.firstvalue}</h1>    
+    <button type="button" onClick={this.clickEvent.bind(this,"Passed as argument in Event handling!")}>Click me!</button>
+    <br/>
+    <button type="button" onMouseOver={this.clickEvent.bind(this,"Passed as argument in Event handling!")}>Move over!</button>
+    </div>
+    }
+  }
+  ReactDOM.render(<EventHandling/>, document.getElementById('root'));
+  </script>
+</body>
+</html>
