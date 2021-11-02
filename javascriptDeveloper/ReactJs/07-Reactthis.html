@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React this keyword</title>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <button type="button" id="btn">Click me!</button>
+    <h1 id="h1">Heading tag</h1>
+    <div id="div">Its me div tag</div>
+    <p id="para">Its me para tag</p>
+    <script type="text/babel">
+  // this keyword in regular function - represent the object that called the function - (it will show through which obj the function is called)
+  // this keyword in arrow function - represent the object that defined the arrow function - (it will not show through which obj the function is called)
+      // class Reactthis extends React.Component{
+      //   ChangeColor = function (){
+      //     document.getElementById('root').innerHTML += this;
+      //   }
+      // }
+      // var reactthis = new Reactthis();
+      // window.addEventListener('load', reactthis.ChangeColor);
+      // document.getElementById('btn').addEventListener('click', reactthis.ChangeColor);
+      // document.getElementById('h1').addEventListener('click', reactthis.ChangeColor);
+      // document.getElementById('div').addEventListener('click', reactthis.ChangeColor);
+      // document.getElementById('para').addEventListener('click', reactthis.ChangeColor);
+
+      class Reactthis extends React.Component{
+        ChangeColor = ()=>{
+          document.getElementById('root').innerHTML += this;
+        }
+      }
+      var reactthis = new Reactthis();
+      window.addEventListener('load', reactthis.ChangeColor);
+      document.getElementById('btn').addEventListener('click', reactthis.ChangeColor);
+      document.getElementById('h1').addEventListener('click', reactthis.ChangeColor);
+      document.getElementById('div').addEventListener('click', reactthis.ChangeColor);
+      document.getElementById('para').addEventListener('click', reactthis.ChangeColor);
+    </script>
+</body>
+</html>
