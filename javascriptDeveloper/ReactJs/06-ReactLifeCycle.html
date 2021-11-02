@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Life cycle</title>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="mydiv"></div>
+    <script type="text/babel">
+  // 1. Initial Phase - To initiallize defalut value for property and state by two methods (getDefaultProps(), getInitialState())
+  // 2. Mounting Phase - After initialization of component is done, then the component is mounted on the DOM and rendered for the first time in webpage
+  // (componentWillMount(), componentDidMount())
+  // 3. Updating Phase - Where state and props of the component are updated followed by some user events
+  // (componentWillUpdate(), componentDidUpdate(), shouldComponentUpdate(), render())
+  // 4. Unmounting Phase - Invoke immeditely before the component is destroyed or premanently unmounted. Also performs necessary cleanup task such as
+  // (Invalidating timer, event listener, canceling network request, cleanup DOM elements), If component instance is unmounted,we can't mount again.
+
+  class Lifecycle extends React.Component {
+    constructor(){
+      super();
+      this.state = {firstvalue: "Learning", secondvalue: "LifeCycle"}
+    }
+    componentWillMount(){
+      alert('Before render method- only for the first time');
+    }
+    changevalue = ()=>{
+      this.setState({firstvalue: "There are 4 phase to learn in "})
+    }
+    deleteHeader = ()=>{
+      this.setState({firstvalue: false, secondvalue: false})
+    }
+    render(){
+      return <div>
+        <h3>
+          {this.state.firstvalue} {this.state.secondvalue}
+        </h3>
+        <br/>
+        <button type="button" onClick={this.changevalue}>Change value</button>
+        <br/>
+        <button type="button" onClick={this.deleteHeader}>Delete Header</button>
+        </div>
+    }
+    componentDidMount(){
+      setTimeout(()=>{
+        this.setState({firstvalue:"Finshed Learning"})
+      }, 5000)
+    }
+    componentWillUpdate(){
+      alert('Do you want to change the value?');                 // only after finshing willupdate - didmount is called
+    }
+    componentDidUpdate(){
+      document.getElementById('mydiv').innerHTML = "New value updated successfully!" + this.state.firstvalue; // current value of firstvalue
+    }
+    shouldCompnentUpdate(){
+      return true;             // if false - will not rerender
+    }
+
+  }
+  ReactDOM.render(<Lifecycle/>, document.getElementById('root'));
+    </script>
+</body>
+</html>

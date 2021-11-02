@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Props</title>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+  // class ReactPropsParent extends React.Component {
+  //   render() {
+  //     return <div>
+  //       <h1>Learn {this.props.var.topic} {this.props.var.concept} in {this.props.var.lang}</h1>
+  //       </div>
+  //   }
+  // }
+
+
+  class ReactPropsParent extends React.Component {
+    render() {
+      return <div>
+        <h1>Learn {this.props.topic} {this.props.concept} in {this.props.lang}</h1>
+        </div>
+    }
+  }
+
+
+
+  // class ReactPropsChild extends React.Component {
+  //   render(){   // pass props from child component to parent component
+  //     const lng = {lang: "english", topic: "react", concept: "props"};   // can pass props as signle value or object
+  //     return <ReactPropsParent var={lng}/>
+  //   }
+  // } 
+
+  ReactPropsParent.defaultProps = {topic: "React",concept: "props", lang: "tamil"};
+ReactDOM.render(<ReactPropsParent concept="component Vs state"/>, document.getElementById('root'));
+  </script>
+</body>
+</html>

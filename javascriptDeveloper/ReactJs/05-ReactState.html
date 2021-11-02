@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React State</title>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+    // 1. Based on user action, initialy we have defined a value for state (React state)
+    // 2. Can't change values of state in proerties(immutable) but can change values of state in react state(mutable)
+    // 3. create initial value for state in constructor component and assign attributes and value. And accessed inside render() method- this.state.propertyName
+    // 4. To change a value in state object - this.setState(), then render method is recalled and html value is changed
+
+    class State extends React.Component {
+      constructor(){
+        super();                          // super - to initiallize and to get value for child class to parent class
+        this.state = {initialvalue: "Hi karthikeyini", secondvalue: "Welcome", thirdvalue: "to learn React State"}
+      }
+      changeValue = () => {
+        this.setState({initialvalue: "Thanks for watching the video", secondvalue: "", thirdvalue: ""})
+      }
+      render() {
+        return <div>
+          <h1>
+            {this.state.initialvalue}
+          </h1>
+          <h2>
+            {this.state.secondvalue}
+          </h2>
+          <h3>
+            {this.state.thirdvalue}
+          </h3>
+          <br/>
+          <button type="button" onClick={this.changeValue}>Exit</button>
+        </div>
+      }
+    }
+    ReactDOM.render(<State/>, document.getElementById('root'));
+    </script>
+</body>
+</html>
