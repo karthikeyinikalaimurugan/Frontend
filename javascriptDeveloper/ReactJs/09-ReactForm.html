@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Forms</title>
+</head>
+<body>
+  <form class="form">
+    <div>
+      <label for="username">Username</label>
+        <input type="text" class="text" name="username">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" class="password" name="password">
+    </div>
+    <div>
+      Gender
+    </br>
+    <label for="male">Male</label>
+      <input type="radio" class="gender" name="male">
+    <label for="female">Female</label>
+      <input type="radio" class="gender" name="female">
+    <label for="transgender">Transgender</label>
+      <input type="radio" class="gender" name="transgender">
+    </div>
+    <div>
+      <label for="Country">Country</label>
+      <select name="Country">
+        <option value="in">INDIA</option>
+        <option value="Us">USA</option>
+        <option value="Au">Australia</option>
+      </select>
+    </div>
+    <div>
+      <label for="checkbox">Send Email Notification?</label>
+      <input type="checkbox" name="checkbox">
+    </div>
+    <div>
+      <button type="submit">SUBMIT</button>
+    </div>
+  </form>
+  <script>
+    document.getElementsByClassName('form')[0].addEventListener('submit',(e)=>{
+      console.log(e);
+      e.preventDefault(); // ipo page refresh aagathu run
+    });
+
+
+     const fields = [
+       {
+         type: 'text',
+         label: 'Username',
+       },
+       {
+         type: 'password',
+         label: 'Password',
+       },
+       {
+         type: 'radio',
+         label: 'Gender',
+         options:[
+            {
+              label: 'Male',
+              value: 'M',
+            },{
+              label: 'Female',
+              value: 'F'
+            },
+            {
+              label: 'Transgender',
+              value: 'T'
+            }
+         ]
+       },
+       {
+         type: 'select',
+         label: 'Country',
+         options: [
+           {
+             label: 'India',
+             value: 'IN'
+           },
+           {
+             label: 'USA',
+             value: 'US'
+           },
+           {
+             label: 'Australia',
+             value: 'AU'
+           }
+         ]
+       },
+       {
+         type: 'checkbox',
+         label: 'Send Notification mails'
+       }
+     ];
+
+    
+  </script>
+</body>
+</html>
