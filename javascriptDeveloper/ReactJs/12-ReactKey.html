@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>React Key</title>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+  // Keys - used to identify which items in the list are changed/updated/deleted
+  // Determines which component in a collection needs to be re-rendered instead of re-rendering the entire set of component every time
+  // save time and memory
+
+  // function UserProfile(props){
+  //   const content = props.data.map((show)=>{
+  //     return <div key={show.id}>
+  //       <h3>{show.id} {show.username} {show.gender} {show.age} {show.location}</h3>
+  //     </div>
+  //   });
+  //   return <div>
+  //     {content}
+  //   </div>
+  // }
+  // const profile = [
+  //   {id: 1, username: 'karthikeyini', gender:'female', age: 24, location: 'chennai'},
+  //   {id: 2, username: 'Poochi', gender:'female', age: 21, location: 'blore'},
+  // ]
+  // 1 karthikeyini female 24 chennai
+  // 2 Poochi female 21 blore
+
+  
+  function ListKey(props){
+    const item = props.items;
+    const key = props.keys;
+    return (
+      <li>{key} {item}</li>
+    )
+  }
+  function List(props){
+    const mylist = props.mydata.map((listvalue, index)=>{
+      <ListKey keys={index} items={listvalue}/>
+    });
+    return (
+      <div>
+      <h2>List Example</h2>
+      <h1>hi</h1>
+        <ul>{mylist}</ul>
+      </div>
+    )
+  }
+  const data=[300,1000,7000,100,345];
+  ReactDOM.render(<List mydata={data}/>, document.getElementById('root'));
+  </script>
+</body>
+</html>
