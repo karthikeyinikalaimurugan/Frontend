@@ -19,7 +19,7 @@
 <body>
   <div id="root"></div>
   <script type="text/babel">
-  // oru new component welcome user component irukanum athuku author props vangi avangala welcome pananum author="senthur" welcome senthur so multiple  welcomes for different users senthur,karthikeyini, poochi. etch
+  
   class WelcomeUser extends React.Component {
     render(){
       return <div>Welcome {this.props.author} <span onClick={this.props.onDelete}>X</span></div> // ithu expression ila stringah kuduthuruka like normal html
@@ -53,12 +53,11 @@
       })
     }
     
-    render(){ // ipo dynamic ah ithu render pananum loop la map function pathaiya ilaiya..? authors prop vangu
+    render(){
       return <div>
       {
-          this.state.authors.map((authorObj)=>{ // [] array kula iruka enry onona ithula author ['senthur','karthikeyini','poochi'
-            return <WelcomeUser key={authorObj.id} onDelete={()=>this.delete(authorObj.id)} author={authorObj.name}/> // yes atha vangi intha compoennt ku propsah pass pandroam. ethathu uniq id ah irukanum antha iteration ku.. 1st entry 1 irunthu 3rd entry 1 iruntha athauku ethu update pananum nu theriyathu.. 
-            //ipo current iteration index thaan irukum so 3 nah  0,1,2 irukum key ah.  yes map oda function ku first param element and second param antha element index in that array.
+          this.state.authors.map((authorObj)=>{
+            return <WelcomeUser key={authorObj.id} onDelete={()=>this.delete(authorObj.id)} author={authorObj.name}/> 
           })
       }
       </div>
@@ -66,19 +65,7 @@
   }
   
   ReactDOM.render(<App/>, document.getElementById('root'))
-  // app component render kula eruma maadea App nu oru component firstuh create pannu.. firstuh oru app componetn create panu ipo App ngrathu undefined enga paniruka app nu oru comonent..?
-  // ipo enaku multiple names veanum.
-  // hint wrapper component create pani athukula ithu multiple times welcomUser compoentn use panikalam with multiple author App component vachuko
-// ithula children usea aagalala.. aprom ean open and close tag? props irukalam aana children irukathu thaan open and close veanum.
-
-
-
-
-
-
-
-
-
+  
 
   class MyApp extends React.Component {
     render(){
@@ -132,15 +119,7 @@
 //     <div id="root"></div> --- step 1
 
 //     <MyApp/> ---> renders  -> '<div> i am a component</div>'
-//     // ithu attribute ila.. props.. props vanthu namala define pandre variable mathuri.. attributes vanthu un istathukku vachukalam but make sure that it should not be  already defined attribute.
-//     // yes className alt, src, style, href ithu mathuri default irukuratha mathatha mathuri vera name la kuduthu data antha component ku send paniklam.
-//     // Haha product ngra datava antha component ku send pandroam..
 //     <Header company="Haha product"/>  ---- > renders ->  '<header>{this.props.company}</header>' -> '<header>Company</header>'
-//     inga 2 component <MyApp> and <Header> mostly Capital letter la irukurathu component bec Class name Capital la start aagum.. 
-
-// array nu sola mudiyathu object nu solalam...
-
-// wait naan sona React.createElement() // will return an object so here this code will produce something like this.
 
 // const Header = React.createElement('header',{},
 //       'I am a header'
@@ -173,13 +152,6 @@
 //         }
 
 
-// it should return either html element or some other react element.
-//     ithu vanthu REACTDOM render ena panum na entire app or root component ah target element ku render panum...
-    
-
-
-
-
 // const element = React.createElement(
 //   'h1',
 //   {className: 'greeting'},
@@ -194,7 +166,7 @@
 //     className: 'greeting',
 //     children: 'Hello, world!'
 //   }
-// };  so parent element kula ethathu kuduthurunha atha this.props.children nu ulla access panikalam.
+// };
 
 
 // <MyApp title="test"/> // ipadi close panama
@@ -202,27 +174,10 @@
 //    I am a children
 // </MyApp> // ipadi children um pass panikalam..
 
-// yes content vanthu children it can be text or any other component itself
 
 // <MyApp title="test">
 //    <Header/> // ipadiyum children pass panalm yes
 // </MyApp>
-
-// ithula My App ena render pananum ngrathu MyApp Class oda render la return panuvoam..
-
-
-// same Header Component la ena return pananumo render method la return panuvoam..
-
-
-// so component kula iruka render method antha compoennt call pana ena varanum.. nu specificah return pannaum.
-
-
-// but ReactDOM.render vanthu entire Wrapper component or root component ah actual target component ku render panum.
-// oru oru componentum onu return panuma...?
-
-// so athu enga call aagum ..? either unoru componentkula ila root level la..
-
-// so nee create pandre ella component umea oru root component kula than irukum  antha component ah dom oda attach pandrathu ReactDOM
 
 
 // <div id="root"></div>
@@ -238,8 +193,6 @@
 //     }
 // }
 
-// <App> -> ipadi ipo call pana keala iruka elements return panum..
-
 
 // <div>
 // <header>I am header</header>
@@ -247,16 +200,6 @@
 // <footer> ia am footer</footer>
 // </div>
 
-// ipo ithu thaan root component which holds all other component. apo ithu virtual DOM la iruku.. but innum nee kudutha id="root" div la innum attach aagala..
-
-// so intha root React component ah unoda actual html dom la attach pananum
-
-
-// inthal line execute aagura munadi vara
-// <div id="root"></div>
-// // empty childrens
-// athuku ReactDOM.render(<App/>, document.getElementById('root'));
-// after this line un component ithula attach aidukum ..
 // <div id="root">
 //     <div>
 //     <header>I am header</header>
@@ -264,15 +207,6 @@
 //     <footer> ia am footer</footer>
 //     </div>
 // </div>
-
-
-
-// So entha oru app nalum oru root component la irunthu thaan start aagum..
-
-// nee create pana components ellamea virtualah irukm memoryla.. but innum dom la attach aagala.. so ReactDOM.render veanum  yes..
-// VM2646:11 Uncaught SyntaxError: Unexpected token ':'
-
-
 
   </script>
 </body>

@@ -15,7 +15,18 @@
   // Only call hooks from react function (can't call hooks in regular js function)
   // useState() for setting initial value and retrieving state
   // useState(initialvalue, function) funct- event handler
-    
+    import React, { useState } from "react";
+    import { ReactDOM } from "react-dom";
+    function ReactHooks() {
+    const [count,updatedcount] = useState(0);
+    return (
+      <div>
+        <p>Button was cliked {count} times</p>
+        <button onClick={()=>updatedcount(count+1)}>Click Me!</button>
+      </div>
+      );
+  }
+  ReactDOM.render(<ReactHooks/>, document.getElementById('root'));
   </script>
 </body>
 </html>
