@@ -15,7 +15,9 @@ class Routering extends React.Component {
       <Router>
         <Switch>
           <Route exact path="/" Component={Home}/>
-          <Route exact path="/about" Component={About}/>
+          <Route exact path="/about">
+            <About companyName="HAHAPRODUCTS"/>
+          </Route>
           <Route exact path="/contact" Component={Contact}/>
           <Route exact path="/termsandconditions" Component={TermsandConditions}/>
           <Route exact path="/privacypolicy" Component={PrivacyPolicy}/>
