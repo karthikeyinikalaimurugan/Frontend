@@ -10,13 +10,24 @@ import Contact from "./pages/Contact";
 import TermsandConditions from "./pages/TermsandConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 class Routering extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {companyName: "Haha Products"};
+  }
+
   render() {
+    let ch = this;
+    if(this.state.companyName!=='Haha!!'){
+      setTimeout(()=>{
+        ch.setState({companyName: "Haha!!"});
+      },5000);
+    }
     return(
       <Router>
         <Switch>
           <Route exact path="/" Component={Home}/>
           <Route exact path="/about">
-            <About companyName="HAHAPRODUCTS"/>
+            <About companyName={this.state.companyName}/>
           </Route>
           <Route exact path="/contact" Component={Contact}/>
           <Route exact path="/termsandconditions" Component={TermsandConditions}/>
