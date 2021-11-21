@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import "../index.css";
 
 class Searchbar extends Component {
     constructor (props) {
         super(props);
-        this.getSearchText = this.getSearchText.bind(this);
+        // this.getSearchText = this.getSearchText.bind(this);
         this.reset = this.reset.bind(this);
     }
     getSearchText(e) {
@@ -21,7 +20,7 @@ class Searchbar extends Component {
         return (
             <div className="searchbar">
                 <input name="searchText" placeholder="search contact" className="inputSearch"></input>
-                <button className="searchBtn" onClick={this.getSearchText}>SEARCH</button>
+                <button className="searchBtn" onClick={(e)=>this.getSearchText(e)}>SEARCH</button>
                 <button className="resetBtn" onClick={this.reset}>RESET</button>
             </div>
         );

@@ -18,11 +18,14 @@ class Table extends React.Component {
                                 <td>{contact.contactName}</td>
                                 <td>{contact.contactNumber}</td>
                             <td>
-                                <button>EDIT</button>
-                                <button>DELETE</button>
+                                <button onClick={()=>this.props.editContact(contact)}>EDIT</button>
+                                <button onClick={() => {this.props.deleteContact(contact.contactId)}}>DELETE</button>
                             </td>
                         </tr> 
                         })
+                    }
+                    {
+                        !this.props.data.length && <tr><td> No Contacts Found! </td></tr>
                     }
                 </tbody>
             </table>
