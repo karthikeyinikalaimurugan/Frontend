@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ref</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // ref= function/ Ref Obj (React.createRef())
+        class Refcolor extends React.Component {
+            refDivEle = React.createRef();  
+            refDivElement = false;
+            refMultiDivEle = [];
+            render() {
+                return (
+                    <>
+                    <input type="color" onChange={(e)=>{
+                        let colorValue = e.target.value;
+                        // console.log('color', colorValue);
+                        // console.log(this.refDivEle);
+                        this.refDivEle.current.style.backgroundColor = colorValue;
+                        this.refDivEle.current.innerText = "ChangeReactRefText";
+                        this.refMultiDivEle.map(e =>{
+                            e.style.backgroundColor = colorValue;          // call back function for multi ref
+                        })
+                    }} />
+                    <div ref={this.refDivEle}>Ref Example1</div>
+                    <div ref={(e)=>this.refDivElement=e}>Ref Example1</div>
+                    <div ref={(e)=>{this.refMultiDivEle.push(e)}}>Ref Example2</div>
+                    <div ref={(e)=>{this.refMultiDivEle.push(e)}}>Ref Example3</div>
+                    </>
+                )
+            }
+        }
+        class App extends React.Component {
+            constructor(props){
+                super(props)
+                this.inputRef = React.createRef()
+            }
+            componentDidMount() {
+                this.inputRef.current.focus()
+                console.log('component',this.inputRef);
+            }
+            handleClick = (e) =>{
+                alert(this.inputRef.current.value);
+            }
+            render() {
+                return (
+                    <div className="App">
+                        <input type="text" ref={this.inputRef} />
+                        <button onClick={this.handleClick}>CLICK</button>
+                        <Refcolor/>
+                    </div>
+                );
+            }
+        }
+
+        const ForwardRefWrapper = React.forwardRef((props,Ref)=>{
+            return <div ref={Ref}></div>
+        });
+
+        class Parent extends React.Component {
+            constructor(props){
+                super(props);
+                this.DivRef = React.createRef();
+            }
+            render() {
+                return (
+                    <div>
+                        <ForwardRefWrapper ref={this.DivRef}/>
+                    </div>
+                );
+            }
+        }
+        ReactDOM.render(<Parent/>, document.getElementById('root'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context API</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const AuthContext = React.createContext();
+        class App extends React.Component {
+            render(){
+                return(
+                        <h1>App Component!</h1>
+                )
+            }
+        }
+        class Child extends React.Component {
+            // static contextType = AuthContext;
+            render() {
+            const {name,isAuthenticated,logIn,logOut} = this.context;
+                console.log("childcontext",this.context)
+                return (
+                    <div>
+                        <h1>Child Component</h1>
+                        <h1>Username: {name}</h1>
+                        <h1>Authenticated: {isAuthenticated ? "Authenticated" : "UnAuthenticated"}</h1>
+                        <button onClick={logIn}>LOGIN</button>
+                        <button onClick={logOut}>LOGOUT</button>
+                    </div>
+                );
+            }
+        }
+        Child.contextType = AuthContext;
+        class Child2 extends React.Component {
+            static contextType = AuthContext;
+            render() {
+                const {name,isAuthenticated,logIn,logOut} = this.context;
+                return (
+                <AuthContext.Consumer>
+                {(AuthContext)=>{
+                    return <div>
+                        <h1>Child Component</h1>
+                        <h1>Username: {name}</h1>
+                        <h1>Authenticated: {isAuthenticated ? "Authenticated" : "UnAuthenticated"}</h1>
+                        <button onClick={logIn}>LOGIN</button>
+                        <button onClick={logOut}>LOGOUT</button>
+                    </div>
+                }}
+                </AuthContext.Consumer>
+                );
+            }
+        }
+        class AuthProvider extends React.Component {
+            state = {
+                name: '',
+                isAuthenticated: false,
+            }
+            logIn = ()=>{
+                this.setState({name: 'karthikeyini', isAuthenticated: true});
+            }
+            logOut =()=>{
+                this.setState({name:'', isAuthenticated: false});
+            }
+        render(){
+            const {name,isAuthenticated} = this.state;
+            const {logIn,logOut} = this;
+            return(
+                <AuthContext.Provider value={{
+                    name,
+                    isAuthenticated,
+                    logIn,
+                    logOut
+                }
+                }>
+                    {this.props.children}
+                </AuthContext.Provider>
+            )
+        }
+    }
+    ReactDOM.render(<AuthProvider>
+                        <div>
+                            <App/>
+                            <Child/>
+                            <Child2/>
+                        </div></AuthProvider>, document.getElementById('root'));
+    </script>
+</body>
+</html>

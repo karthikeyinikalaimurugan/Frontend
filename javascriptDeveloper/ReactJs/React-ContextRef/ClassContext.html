@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Context</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const userContext = React.createContext();
+        const themeContext = React.createContext();
+        
+        // context - provider, consumer
+        // userContext.Provider, userContext.Consumer
+        // const userProvider = userContext.Provider (userContext.Provider)
+        // 
+        class Header extends React.Component {
+
+            render() {
+                return(
+                    <>
+                    <h1>{this.props.title}</h1>
+                    <Account/>
+                    </>
+                )
+            }
+        }
+        class Account extends React.Component {
+            static contextType = userContext;
+            render() {
+                return(
+                    <div>{this.context.name}</div>
+                )
+            }
+        }
+        class DisplayAccount extends React.Component {
+            render() {
+                return (
+                    <div>
+                        {this.props.name}
+                        {this.props.theme}
+                    </div>
+                );
+            }
+        }
+        class ChangeAccount extends React.Component {
+            handleClick(){
+            }
+            render() {
+                return (
+                    <div>
+                        <userContext.Consumer>
+                            {(userContext)=>{
+                                return <themeContext.Consumer>
+                                    {(themeContext)=>{
+                                      return <DisplayAccount name={userContext.name} theme={themeContext}/>
+                                    }}
+                                </themeContext.Consumer>
+                            }}
+                        </userContext.Consumer>
+                        <button className="btn" onClick={this.handleClick}>SWITCH ACCOUNT</button>
+                    </div>
+                );
+            }
+        }
+        class App extends React.Component {
+            setUser(updateduser){
+                this.setState({user:updateduser});
+            }
+            render() {
+                this.state.user = {
+                    name: 'Karthi',
+                    loggedIn: true,
+                }
+                const theme = "light";
+                return (
+                    <themeContext.Provider value={theme}>
+                        <userContext.Provider value={{user:this.state.user,setUser:this.setUser}}>
+                            <>
+                                <Header title="Context Switch"/>
+                                <ChangeAccount />
+                            </>
+                        </userContext.Provider>
+                    </themeContext.Provider>
+                )
+            }
+        }
+        ReactDOM.render(<App/>, document.getElementById('root'));
+    </script>
+</body>
+</html>
