@@ -16,41 +16,50 @@ import axios from "axios";
 
 // UseState:
 const State = () =>{
-  const [name,setName] = useState('karthi');
-  const [age,setAge] = useState('20');
+  const [user,setUser] = useState({name:'user',age:20});
   const [inputvalue, setInputvalue] = useState("hi");
   let onChange = (e) => {
     const newValue = e.target.value;
     setInputvalue(newValue);
   }
   let updateName = () => {
-    setName('Karthikeyini.');
+    setUser({
+      ...user,
+      name:'Karthikeyini.'
+    });
   }
   let updateAge = () => {
-    setAge(24);
+    setUser({
+      ...user,
+      age: 24});
   }
   
   return(
     <div>
-      {name}
+      {user.name}
       <button onClick={updateName}>updated name</button><br/>
-      {age}
+      {user.age}
       <button onClick={updateAge}>updated age</button><br/>
       {inputvalue}
-      <input placeholder="enter somethiing..." onChange={onChange}></input>
+      <input placeholder="enter somethiing..." value={inputvalue} onChange={onChange}></input>
     </div>
   )
-
 }
 
 // useReducer
 
-const reducer = (state, action) => {
+const reducer = (state = {}, action) => {
   switch (action.type) {
     case "Increment":
-      return {count: state.count + 1, showText: state.showText};
+      return {
+        ...state,
+        count: state.count+1
+      };
     case "toggle":
-      return {count: state.count, showText: !state.showText};
+      return {
+        ...state,
+        showText: !state.showText
+      };
     default:
       return state;
   }   
@@ -72,24 +81,58 @@ const Reducer = () => {
 
 //useEffect
 
-const Effect = () => {
+const Effect = ({url="https://jsonplaceholder.typicode.com/comments"}) => {
   const [data, setData] = useState("");
   const [count,setCount] = useState(0);
+  const [msg,setMsg] = useState('');
+  const [value,setValue] = useState('');
+  // useEffect(()=>{
+  //   setCount(2);
+  // },[])
+  //apicall
+  // useEffect(()=>{
+  //   document.getElementById('textbox').addEventListener('change',(e)=>{
+  //     console.log(e.target.value)
+  //   });
+  //   console.log("hello world");
+  //   axios.get(url).then((response)=>{
+  //     console.log(response.data);
+  //     setData(response.data[0].email);
+  //     console.log('API called');
+  //   });
+  //   // frstapirespose
+  //   return ()=>{                      // ComponentWillUnmount - to remove [eventListeners, state rest]
+  //     console.log("clearing function1");
+  //     document.getElementById('textbox').removeEventListener('change',(e)=>{
+  //       console.log(e.target.value)
+  //     });
+  //   }
+  // },[]);
+  //second
   useEffect(()=>{
-    console.log("hello world");
-    axios.get("https://jsonplaceholder.typicode.com/comments").then((response)=>{
-      console.log(response.data);
-      setData(response.data[0].email);
-      console.log('API called');
-    });
-  },[]);
+    console.log("UPDATING STATE COUNT");
+  },[msg]);
+
+  useEffect(()=>{
+    console.log('value', value)
+    if(value) setCount(10);
+  },[value]);
+
+  useEffect(()=>{
+    if(count === 1) setMsg('I am incremented');
+    // setCount(5);
+    if(count===15) setCount(0);
+  },[count,msg]);
+
   return (
     <div>
-    Helooo
+    Helooo {msg}
+    {value}
     <h1>{data}</h1>
     <h1>{count}</h1>
     <button onClick={()=>{
       setCount(count+1);
+      if(count === 10) setValue('reseting');
     }}>Click</button>
     </div>
   )
@@ -99,15 +142,19 @@ const Effect = () => {
  
 const Ref = () => {
   const inputRef = useRef(null);
+  const [element,setElement] = useState(null);
   const onClick = () =>{
     console.log(inputRef.current.value);
     inputRef.current.focus();
     inputRef.current.value = "";
+    element.value = "hi";
+    element.focus();
   };
   return (
     <div>
       <h1>Helo Ref</h1>
       <input ref={inputRef} type="text" placeholder="..." />
+      <input ref={(e)=>setElement(e)} type="text" placeholder="..." />
       <button onClick={onClick}>Change Name</button>
     </div>
   );
@@ -126,19 +173,24 @@ const Login = () => {
 }
 const User = () => {
   const {username} = useContext(AppContext);
+  const {theme,setTheme} = useContext(ThemeContext);
   return (
     <div>
       <h1>User: {username}</h1>
+      <h2>theme: {theme}</h2>
     </div>
   )
 }
 const AppContext = React.createContext(null);
+const ThemeContext = React.createContext(null);
 const Context = () => {
   const [username, setUsername] = useState("");
   return (
     <AppContext.Provider value={{username, setUsername}}>
-      <Login />
+      <ThemeContext.Provider value={{theme: 'light'}}>
       <User />
+      </ThemeContext.Provider>
+      <Login />
     </AppContext.Provider>
   );
 }
@@ -190,6 +242,7 @@ const Button = React.memo(({handleClick, children}) => {
 const Callback = () => {
   const [age,setAge] = useState(24)
   const [salary,setSalary] = useState(50000)
+  const printMsg = (msg)=>console.log(msg)
 
   const incrementAge = useCallback(() => {
     setAge(age+1)
@@ -207,4 +260,4 @@ const Callback = () => {
   )
 } 
 // useCallback hook will cache incrementsalary func and return that if salary is not incremented, if salary does incremented that is the dependency has changed only then a new funct will be retruned.
-ReactDOM.render(<Callback/>,document.getElementById('root'));
+ReactDOM.render(<Effect/>,document.getElementById('root'));
