@@ -200,3 +200,19 @@ async function name(){
   return promise;
 }
 
+async function init() {
+  const a = await (new Promise((resolve,reject)=>{
+      setTimeout(()=>{resolve('resolved!')},5000);
+      console.log(resolve);
+  }).then((data)=>{
+      console.log(data); // hello
+      return {success:true,data:data};
+  })
+  .catch((err)=>{
+      console.log(err);
+      return {success:false,err:err};
+  }))
+  console.log(a);
+}
+
+init();
