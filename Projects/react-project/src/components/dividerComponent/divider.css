@@ -1,0 +1,37 @@
+.divider {
+    position: relative;
+    display: flex;
+    flex-grow: 1fr 1fr 1fr;
+    width:100%;
+    background-color: #cef6fd;
+    align-items: center;
+    padding: 20px 0;
+}
+.divider-div {
+    height: 100px;
+    margin:10px;
+    flex-grow: 1fr;
+    background-color: #a9a7a4c2;
+    padding: 20px;
+    font-weight: bold;
+    font-family: roboto;
+    font-size: 18px;
+    text-align: center;
+}
+.divider-div1 {
+    width:30%;
+}
+.divider-div2 {
+    width:30%;
+}
+.divider-div3 {
+    width:30%;
+}
+.divider-div > p{
+    padding:10px;
+    font-style: italic;
+    font-variant: sans-serif;
+    font-size: 20px;
+    font-weight: none;
+    color: #5e5c5c;
+}

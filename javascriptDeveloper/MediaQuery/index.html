@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query</title>
+    <style>
+        body, html {
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            background-color: red;
+            padding:16px;
+        }
+        .item{
+            margin: 8px 0;
+            padding: 16px 0;
+            display: inline-block;
+            background-color: yellowgreen;
+            text-align: center;
+        }
+        
+
+        @media only screen and (max-width: 768px){
+            /*mobile*/
+            .item1,.item2,.item3{
+                width:100%;
+            }
+        }
+        @media (min-width:768px) and (max-width: 1024px){
+            /*tablet*/
+           .item1,.item2{
+               width:41%;
+           }
+           .item3{
+               width:100%;
+           }
+
+        }
+        @media only screen and (min-width:1024px){
+            /* medium large*/
+            .item1{
+                width:20%;
+            }
+            .item2{
+                width:30%;
+            }
+            .item3{
+                width:42%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+    </div>
+</body>
+</html>

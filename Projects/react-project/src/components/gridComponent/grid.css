@@ -1,0 +1,30 @@
+.grid {
+    position: absolute;
+    height: 200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.grid > div{
+    background: #eee;
+    padding: 1em;
+}
+.box1 {
+    grid-row: 1/3;
+    background-image: url('grid1.jpg');
+}
+.box2 {
+    grid-row: 1/3;
+    background-image: url('grid1.jpg');
+}
+.box3 {
+    background-image: url('grid1.jpg');
+}
+.box4 {
+    grid-row: 1/3;
+    background-image: url('grid1.jpg');
+}
+.box5 {
+    background-image: url('grid1.jpg');
+}
