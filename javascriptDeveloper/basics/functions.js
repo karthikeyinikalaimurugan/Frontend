@@ -159,3 +159,39 @@ let C = new B('senthur')
 (function(hi){
   console.log(hi);
 })('helooo')
+
+
+// reduce 
+
+const user = [
+  {fname:'karthi', lname:'keyini',age: 24},
+  {fname:'karthi', lname:'keyini',age: 26},
+  {fname:'karthi', lname:'keyini',age: 24},
+  {fname:'karthi', lname:'keyini',age: 27},
+];
+
+const agered = user.reduce((acc,curr)=>{
+  if(acc[curr.age]){
+  acc[curr.age] = ++acc[curr.age]; 
+} else {
+  acc[curr.age] = 1;
+}
+return acc;
+},{});
+
+
+
+// filter map
+
+const name = user.filter((x)=>x.age > 25).map((x) => x.fname);
+
+
+// generators
+
+function *generators() {
+  yield 24;
+  console.log('first yield');
+
+}
+
+let gen = generators();
