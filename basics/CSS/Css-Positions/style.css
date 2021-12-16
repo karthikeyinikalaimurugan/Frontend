@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* border-box to prevent incresing the size of box whie giving padding*/
+
+.container {
+    height: 400px;
+    width: 400px;
+    background-color: rgb(231, 80, 80);
+    margin: auto;
+    margin-top: 100px;
+}
+.box1 {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 20;
+    background-color: rgb(76, 240, 90);
+}
+.box2 {
+    height: 50px;
+    width: 50px;
+    top: 50px;
+    left: 20;
+    background-color: rgb(79, 76, 240);
+}
+.cn {
+	display: table-cell;
+	width: 500px;
+	height: 500px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.inner {
+	display: inline-block;
+	width: 200px; height: 200px;
+}

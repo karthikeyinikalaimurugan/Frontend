@@ -1,5 +1,9 @@
-import React from 'react';
-import Appbar from './App';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import { ReactDOM } from 'react-dom'
+import App from './App'
 
-ReactDOM.render(<Appbar/>, document.getElementById('root'));
+const Index = () => {
+    <div>helo</div>
+}
+
+ReactDOM.render(<Index/>, document.getElementById('root'));
